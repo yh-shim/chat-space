@@ -2,25 +2,9 @@
   グループを作成／編集しました
 
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__box
-        %p.side-header__box__user-name
-          ユーザー名
-        %ul.side-header__box__wrapper
-          %li.side-header__box__wrapper__create-group
-            =link_to "/", class: "icon" do
-              = fa_icon 'cog'
-          %li.side-header__box__wrapper__edit-user
-            =link_to "/", class: "icon" do
-              = fa_icon 'users'
-    .side-groups
-      =link_to "/", class: "icon" do
-        .group
-          %p.group__name
-            グループ名
-          %p.group__message
-            メッセージ表示欄
+
+  = render './shared/chat-side'
+
   .chat-main
     .main-header
       .main-header__left
@@ -28,6 +12,10 @@
           グループ名
         %ul.main-header__left__member-list
           Member：
+          %li.main-header__left__member-list__member
+            メンバー名
+          %li.main-header__left__member-list__member
+            メンバー名
           %li.main-header__left__member-list__member
             メンバー名
       =link_to "/", class: "edit-btn" do
