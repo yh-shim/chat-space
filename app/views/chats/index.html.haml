@@ -40,12 +40,12 @@
           %p.message__info__date 日付／時刻
         %p.message__text （チャット表示欄）
     .form
-      %form.new-message#new-message{:action => "/", :method => "post"}
-        %input{:name => "utf8", :type => "hidden"}
-        %input{:name => "authenticity_token", :type => "hidden"}
+      %form.new-message#new-message{action: "/", method: "post"}
+        %input{name: "utf8", type: "hidden"}
+        %input{name: "authenticity_token", type: "hidden"}
         .input-box
-          %input.input-box__text#message_content{:name => "message[content]", :type => "text", :placeholder => "type a message"}
+          %input.input-box__text#message_content{name: "message[content]", type: "text", placeholder: "type a message"}
           %label.input-box__image{for: "message_image"}
             %i.fa.fa-image
-            %input.input-box__image__file#message_image{:name => "message[image]", :type => "file"}
-        %input.submit-btn{:name => "commit", :type => "submit", :value => "Send"}
+            %input.input-box__image__file#message_image{name: "message[image]", type: "file"}
+        %input.submit-btn{name: "commit", type: "submit", value: "Send"}
