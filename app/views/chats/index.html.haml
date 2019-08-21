@@ -3,37 +3,29 @@
 
 .wrapper
 
-  = render './shared/chat-side'
+  = render partial: './shared/chat-side'
 
   .chat-main
     .main-header
       .main-header__left
         %h2.main-header__left__current-group
-          グループ名
+          = @group.name
         %ul.main-header__left__member-list
           Member：
-          %li.main-header__left__member-list__member
-            メンバー名
-          %li.main-header__left__member-list__member
-            メンバー名
-          %li.main-header__left__member-list__member
-            メンバー名
+          = render partial: 'user', collection: @users
       =link_to edit_group_path(current_user), class: "edit-btn" do
         .main-header__edit-btn
           Edit
-    .messages
-      .message
-        .message__info
-          %p.message__info__user-name ユーザー名
-          %p.message__info__date 日付／時刻
-        %p.message__text （チャット表示欄）
+
+    .chats
+      = render partial: 'chat', collection: @chats
+
     .form
-      %form.new-message#new-message{action: "/", method: "post"}
-        %input{name: "utf8", type: "hidden"}
-        %input{name: "authenticity_token", type: "hidden"}
-        .input-box
-          %input.input-box__text#message_content{name: "message[content]", type: "text", placeholder: "type a message"}
-          %label.input-box__image{for: "message_image"}
-            %i.fa.fa-image
-            %input.input-box__image__file#message_image{name: "message[image]", type: "file"}
-        %input.submit-btn{name: "commit", type: "submit", value: "Send"}
+      =form_for [@group, @chat] do |f|
+        .form-flex
+          .form__box
+            =f.text_field :text, class: 'form__box__chat', placeholder: 'type a message'
+            =f.label :image, class: 'form__box__image' do
+              =fa_icon 'image', class: 'fa'
+              =f.file_field :image, class: 'file'
+          =f.submit 'Send', class: 'form__submit'
