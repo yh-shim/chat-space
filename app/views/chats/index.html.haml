@@ -13,7 +13,7 @@
         %ul.main-header__left__member-list
           Member：
           = render partial: 'user', collection: @users
-      =link_to edit_group_path(current_user), class: "edit-btn" do
+      =link_to edit_group_path(@group), class: "edit-btn" do
         .main-header__edit-btn
           Edit
 
