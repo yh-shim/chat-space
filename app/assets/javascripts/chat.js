@@ -37,7 +37,7 @@ $(function() {
       console.log(data);
       var html = buildHTML(data);
       $('.chats').append(html);
-      $('.form__box__chat').val(' ');
+      $('form')[0].reset();
       $('.form__submit').removeAttr('disabled');
       $('.chats').animate( {scrollTop: $('.chats')[0].scrollHeight}, 'fast');
     })
